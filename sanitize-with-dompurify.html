@@ -1,0 +1,6 @@
+<script src="https://unpkg.com/dompurify@2.4.0/dist/purify.min.js"></script>
+<script>
+  const dirty = '<script>alert(1)</script><p>Nice <b>post</b></p>';
+  const clean = DOMPurify.sanitize(dirty, {ALLOWED_TAGS: ['p','b','i','em','strong','ul','ol','li']});
+  document.getElementById('content').innerHTML = clean; // now safe-ish
+</script>
