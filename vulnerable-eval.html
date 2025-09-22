@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Calc</title></head>
+<body>
+  <h1>Calculator (vulnerable)</h1>
+  <input id="expr" placeholder="Enter expression, e.g. 2+2">
+  <button id="run">Run</button>
+  <pre id="result"></pre>
+
+  <script>
+    document.getElementById('run').addEventListener('click', () => {
+      const expr = document.getElementById('expr').value;
+      // DANGEROUS: eval executes arbitrary JS
+      try {
+        const value = eval(expr);
+        document.getElementById('result').textContent = String(value);
+      } catch (e) {
+        document.getElementById('result').textContent = 'Error: ' + e.message;
+      }
+    });
+  </script>
+</body>
+</html>
