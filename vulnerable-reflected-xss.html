@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Welcome</title></head>
+<body>
+  <h1>Greeting</h1>
+  <div id="greeting"></div>
+
+  <script>
+    // Read value from URL (vulnerable)
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name) || '';
+    }
+
+    const name = getQueryParam('name');
+    // DANGEROUS: using innerHTML with untrusted input
+    document.getElementById('greeting').innerHTML = 'Hello, ' + name + '!';
+  </script>
+</body>
+</html>
